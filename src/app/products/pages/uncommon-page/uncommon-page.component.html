@@ -1,0 +1,53 @@
+<p-panel header="Números" styleClass="mt-3">
+    <div class="grid">
+        <div class="col-12 md:col-6">
+            <p-fieldset legend="| i18nSelect" [toggleable]="false">
+                <h5>Saludos {{ name }}, queremos {{ gender | i18nSelect:invitationMap }}
+                a nuestro gran evento que tendrá lugar...</h5>
+                <p-button styleClass="p-button-secondary" label="Cambiar nombre" (onClick)="changeUser()"></p-button>
+            </p-fieldset>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-fieldset legend="| i18nPlural" [toggleable]="false">
+                <h5>Actualmente {{ subscribers | i18nPlural:subscribersMap }}.</h5>
+                <p-button styleClass="p-button-secondary" label="Eliminar subscriptor" (onClick)="delete()"></p-button>
+            </p-fieldset>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-fieldset legend="| json & | keyvalue" [toggleable]="false">
+                <ul>
+                    <li>
+                        <h5>Sin pipe</h5>
+                        <h5>{{ data }}</h5>
+                    </li>
+                    <li>
+                        <h5>| json</h5>
+                        <h5>{{ data | json }}</h5>
+                    </li>
+                    <li>
+                        <h5>| keyvalue</h5>
+                        <ol>
+                            <li *ngFor="let datum of data | keyvalue">
+                                <h5>{{ datum.key }}: {{ datum.value }}</h5>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </p-fieldset>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-fieldset legend="| async" [toggleable]="false">
+                <h5>{{ (interval | async) }}</h5>
+                <!--
+                <h5>{{ (intervalValue*100) }}</h5>
+                <h5 *ngIf="(intervalValue) && (intervalValue % 3 == 0)" style="color:red">Rojo</h5>
+                <h5 *ngIf="(intervalValue) && (intervalValue % 3 == 1)" style="color:yellow">Amarillo</h5>
+                <h5 *ngIf="(intervalValue) && (intervalValue % 3 == 2)" style="color:green">Verde</h5>
+                -->
+            </p-fieldset>
+        </div>
+    </div>
+</p-panel>

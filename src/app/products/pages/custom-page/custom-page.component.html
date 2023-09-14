@@ -1,0 +1,43 @@
+<p-panel header="Otros" styleClass="mt-3">
+    <div class="grid">
+        <div class="col-12">
+            <p-card>
+                <ol>
+                    <li><h5>Sin pipe => {{ text }}</h5></li>
+                    <li><h5>| customPipe1 => {{ text | customPipe1:remainder }}</h5></li>
+                    <li><h5>| customPipe2 => {{ text | customPipe2:num }}</h5></li>
+                </ol>
+                    <p-button label="customPipe1" styleClass="p-button-secondary ml-4" (onClick)="changeRemainder()"></p-button>
+                    <p-inputNumber
+                        styleClass="ml-4"
+                        [maxlength]="1"
+                        [min]="1"
+                        [max]="9"
+                        [size]="10"
+                        placeholder="| customPipe2"
+                        (onInput)="changeNum($event)">
+                    </p-inputNumber>
+            </p-card>
+        </div>
+        <div class="col-12">
+            <p-fieldset legend="| sortBy">
+                <p-table [value]="personajes | sortBy: orderBy: order">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th (click)="changeOrder('nombre')">Nombre</th>
+                            <th (click)="changeOrder('raza')">Raza</th>
+                            <th (click)="changeOrder('vuela')">¿Vuela?</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-personaje>
+                        <tr>
+                            <td>{{ personaje.nombre }}</td>
+                            <td>{{ personaje.raza }}</td>
+                            <td>{{ personaje.vuela | canFly }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-fieldset>
+        </div>
+    </div>
+</p-panel>
