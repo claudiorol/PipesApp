@@ -1,15 +1,17 @@
 //ng g m products --routing
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { BasicPageComponent } from './pages/basic-page/basic-page.component';
+import { CustomPageComponent } from './pages/custom-page/custom-page.component';
+import { DefinitionPageComponent } from './pages/definition-page/definition-page.component';
 import { NumberPageComponent } from './pages/number-page/number-page.component';
 import { UncommonPageComponent } from './pages/uncommon-page/uncommon-page.component';
-import { CustomPageComponent } from './pages/custom-page/custom-page.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: BasicPageComponent
+    component: DefinitionPageComponent
   },
   {
     path: "custom",
@@ -18,6 +20,10 @@ const routes: Routes = [
   {
     path: "number",
     component: NumberPageComponent
+  },
+  {
+    path: "text",
+    component: BasicPageComponent
   },
   {
     path: "uncommon",

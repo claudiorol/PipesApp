@@ -14,6 +14,7 @@ import { CustomPipe1 } from './pipes/custom-pipe1.pipe';
 import { CustomPipe2 } from './pipes/custom-pipe2.pipe';
 import { CanFly } from './pipes/can-fly.pipe';
 import { SortBy } from './pipes/sort-by.pipe';
+import { DefinitionPageComponent } from './pages/definition-page/definition-page.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SortBy } from './pipes/sort-by.pipe';
     CustomPipe1,
     CustomPipe2,
     CanFly,
-    SortBy
+    SortBy,
+    DefinitionPageComponent
   ],
   imports: [
     CommonModule,

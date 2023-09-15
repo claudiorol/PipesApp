@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
         label: "Pipes de Angular",
         icon: "pi pi-star",
         items: [
-          { label: "Textos y fechas", icon: "pi pi-desktop", routerLink: "/" },
+          { label: "Textos y fechas", icon: "pi pi-desktop", routerLink: "/text" },
           { label: "Números", icon: "pi pi-euro", routerLink: "/number" },
           { label: "No comunes", icon: "pi pi-star", routerLink: "/uncommon" }
         ]
