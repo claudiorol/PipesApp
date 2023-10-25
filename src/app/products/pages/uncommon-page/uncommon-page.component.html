@@ -1,4 +1,4 @@
-<p-panel header="Números" styleClass="mt-3">
+<p-panel header="No comunes" styleClass="mt-3">
     <div class="grid">
         <div class="col-12 md:col-6">
             <p-fieldset legend="| i18nSelect" [toggleable]="false">
@@ -8,10 +8,13 @@
             </p-fieldset>
         </div>
 
-        <div class="col-12 md:col-6">
+        <div class="col-12 md:col-6" #i18nPluralContainer>
             <p-fieldset legend="| i18nPlural" [toggleable]="false">
                 <h5>Actualmente {{ subscribers | i18nPlural:subscribersMap }}.</h5>
-                <p-button styleClass="p-button-secondary" label="Eliminar subscriptor" (onClick)="delete()"></p-button>
+                <div class="flex" [ngClass]="divWidth > 440 ? 'flex-row' : 'flex-column'">
+                    <p-button styleClass="p-button-secondary" label="Añadir subscriptor" (onClick)="add()"></p-button>
+                    <p-button styleClass="p-button-secondary" [ngClass]="divWidth > 440 ? 'ml-4' : 'mt-4'" label="Eliminar subscriptor" (onClick)="delete()"></p-button>
+                </div>
             </p-fieldset>
         </div>
 

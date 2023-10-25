@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { interval, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-uncommon-page',
@@ -7,8 +7,6 @@ import { interval, BehaviorSubject } from 'rxjs';
   styleUrls: ['./uncommon-page.component.css']
 })
 export class UncommonPageComponent implements OnInit {
-
-
 
   //i18Select
   public name: string = "Claudio";
@@ -34,7 +32,10 @@ export class UncommonPageComponent implements OnInit {
     '=0': 'no tenemos subscriptores',
     '=1': 'tenemos un subscriptor',
     'other': 'tenemos # subscriptores',
+  }
 
+  add(): void {
+    this.subscribers++;
   }
 
   delete(): void {
@@ -43,6 +44,20 @@ export class UncommonPageComponent implements OnInit {
     }
     this.subscribers--;
   }
+
+  public divWidth: number = 0;
+
+  @ViewChild("i18nPluralContainer", {static: true}) pluralContainerDiv!: ElementRef;
+
+  getDivWidth(): void {
+    this.divWidth = this.pluralContainerDiv.nativeElement.clientWidth;
+  }
+
+  @HostListener("window:resize") onResize() {
+    this.getDivWidth();
+  }
+
+
 
   //json & keyvalue
   public data = {
@@ -59,6 +74,7 @@ export class UncommonPageComponent implements OnInit {
   public interval = interval(1500);
 
   ngOnInit(): void {
+    this.getDivWidth();
     this.interval.subscribe((num)=> {
       this.intervalValue = num
     })
